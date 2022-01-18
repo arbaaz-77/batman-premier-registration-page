@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Countdown to The Batman</title>
+</head>
+<body>
+    <div class="intro">
+        <h1>Attend the Premier of <strong>THE BATMAN</strong></h1>
+        <p>Join us for this live webinar</p>
+        <p class="top-text">I am vengeance</p>
+    </div>
+
+    <div id="Main-Content" class="main-content">
+        <h2>Witness the Bat</h2>
+        <p>Register Today</p>
+        <p>We all love the batman. Be the first to watch the new journey of the caped crusador. For Free!
+            Sign up with us and a link will be sent to your email.
+            <br />Time: 6pm PT
+            <br />Date: You know the date
+        </p>
+        <form id="Email-Collector" class="email-collector" action="#" method="post">
+            <input name="firstName" type="text" placeholder="Enter Name" required />
+            <input name="emailAddress" type="email" placeholder="Enter Email" required />
+            <button class="btn btn-main" type="submit">Register</button>
+        </form>
+        <p class="fine-print">We'll never share your information without your permission</p>
+    </div>
+
+    <script>
+        let emailCollectorForm = document.getElementById("Email-Collector")
+        emailCollectorForm.addEventListener("submit", event => {
+            event.preventDefault()
+            let ourFormData = new FormData(event.target)
+            let userFirstName = ourFormData.get("firstName")
+            let userEmailAddress = ourFormData.get("emailAddress")
+            let updatedHtmlContent = `
+                        <h2>Congratulations, ${userFirstName}!</h2>
+    
+                        <p>Gotham Awaits. See you there!</p>
+                        
+                        <p class="fine-print">Check your email for the link: ${userEmailAddress}</p>
+                    `
+            let ourMainContent = document.getElementById("Main-Content")
+            ourMainContent.innerHTML = updatedHtmlContent
+        })
+    </script>
+</body>
+
+</html>
